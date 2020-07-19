@@ -1,0 +1,83 @@
+<div class="col-med-auto mx-auto">
+    {{#if datos.0.nivel_estudio}}
+    <div class="card text-center">
+        <div class="card-body">
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group d-flex justify-content-center">
+                        <h2>Datos nivel de estudio previo</h2>
+                    </div>
+                </div>
+                <a href="/ficha/edit-nivel-estudios/{{datos.0._id}}"><i class="fa fa-pencil"></i></a>
+            </div>
+            <hr>
+            <div class="form-row text-left">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="nivel_estudio">Nivel de estudio previo</label>
+                        <label for="" class="form-control">{{datos.0.nivel_estudio}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row text-left">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="nom_escuela">Nombre de la escuela</label>
+                        <label for="" class="form-control">{{datos.0.nom_escuela}}</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="estado_escuela">Estado</label>
+                        <label for="" class="form-control">{{datos.0.estado_escuela}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row text-left">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="anio_inicio">Año de inicio</label>
+                        <label for="" class="form-control">{{datos.0.anio_inicio}}</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="anio_term">Año de terminación</label>
+                        <label for="" class="form-control">{{datos.0.anio_term}}</label>
+                    </div>
+                </div>
+            </div>
+            <h2>Carrera</h2>
+            <hr>
+            <div class="form-row text-left">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="carrera">Carrera a cursar</label>
+                        <label for="" class="form-control">{{datos.0.carrera}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group d-flex justify-content-center">
+                <form action="/ficha/delete-nivel-estudios/{{datos.0._id}}?_method=DELETE" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger btn-block btn-sm w-auto">
+                        Eliminar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+</div>
+{{#if datos.0.nivel_estudio}}
+<div>
+    <ul class="pagination pagination-sm justify-content-center my-4">
+        <li class="page-item"><a class="page-link" href="/ficha/datos-personales" id="Anterior">Anterior</a></li>
+        <li class="page-item"><a class="page-link" href="/ficha/datos-personales" id="uno">1</a></li>
+        <li class="page-item active"><a class="page-link" href="/ficha/nivel-estudios" id="dos">2</a></li>
+        <li class="page-item"><a class="page-link" href="/ficha/datos-se" id="tres">3</a></li>
+        <li class="page-item"><a class="page-link" href="/ficha/documentos" id="cuatro">4</a></li>
+        <li class="page-item"><a class="page-link" href="/ficha/datos-se" id="Siguiente">Siguiente</a></li>
+    </ul>
+</div>
+{{/if}}

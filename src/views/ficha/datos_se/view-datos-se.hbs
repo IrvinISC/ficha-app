@@ -1,0 +1,61 @@
+<div class="col-md-auto mx-auto">
+    {{#if datos.0.grp_ind}}
+    <div class="card text-center">
+        <div class="card-body">
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group d-flex justify-content-center">
+                        <h2>Datos socioeconómicos</h2>
+                    </div>
+                </div>
+                <a href="/ficha/edit-datos-se/{{datos.0._id}}"><i class="fa fa-pencil"></i></a>
+            </div>
+            <hr>
+            <div class="form-row text-left d-flex">
+                <div class="col">
+                    <div class="form-group w-50">
+                        <label>¿Formas parte un grupo indígena?</label>
+                        <label for="" class="form-control">{{datos.0.grp_ind}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row text-left d-flex">
+                <div class="col">
+                    <div class="form-group w-50">
+                        <label>Discapacidad</label>
+                        <label for="" class="form-control">{{datos.0.discapacidad}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row text-left d-flex">
+                <div class="col">
+                    <div class="form-group w-50">
+                        <label>Beneficiario del programa prospera o PAL</label>
+                        <label for="" class="form-control">{{datos.0.prospera}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group d-flex justify-content-center">
+                <form action="/ficha/delete-datos-se/{{datos.0._id}}?_method=DELETE" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger btn-block btn-sm w-auto">
+                        Eliminar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+</div>
+{{#if datos.0.grp_ind}}
+<div>
+    <ul class="pagination pagination-sm justify-content-center my-4">
+        <li class="page-item"><a class="page-link" href="/ficha/nivel-estudios" id="Anterior">Anterior</a></li>
+        <li class="page-item"><a class="page-link" href="/ficha/datos-personales" id="uno">1</a></li>
+        <li class="page-item"><a class="page-link" href="/ficha/nivel-estudios" id="dos">2</a></li>
+        <li class="page-item active"><a class="page-link" href="/ficha/datos-se" id="tres">3</a></li>
+        <li class="page-item"><a class="page-link" href="/ficha/documentos" id="cuatro">4</a></li>
+        <li class="page-item"><a class="page-link" href="/ficha/documentos" id="Siguiente">Siguiente</a></li>
+    </ul>
+</div>
+{{/if}}

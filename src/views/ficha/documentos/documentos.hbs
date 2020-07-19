@@ -1,0 +1,148 @@
+<div class="col-md-auto mx-auto">
+    <div class="card text-center">
+        <div class="card-header">
+            <h1>Nueva ficha</h1>
+        </div>
+        <div class="card-body">
+            <form action="/ficha/new-documentos" method="post" enctype="multipart/form-data" id="formulario">
+                <h2>Documentación</h2>
+                <hr>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label style="font-weight: bold;" for="">Documentos para archivo escolar</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label style="font-weight: bold;" for="">cumplimiento</label>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">Certificado de bachillerato</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input style="background-color: white;" name="documento1" type="file" id="documento"
+                            placeholder="Buscar" required>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">Acta de nacimiento</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input style="background-color: white;" name="documento2" type="file" id="documento"
+                            placeholder="Buscar" required>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">CURP</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input style="background-color: white;" name="documento3" type="file" id="documento"
+                            placeholder="Buscar" required>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">Fotografia tamaño infantil reciente</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input style="background-color: white;" name="documento4" type="file" id="documento"
+                            placeholder="Buscar" required>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">Comprobante de pago por concepto de inscripcion</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input style="background-color: white;" name="documento5" type="file" id="documento"
+                            placeholder="Buscar" required>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">Certificado medico</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input style="background-color: white;" name="documento6" type="file" id="documento"
+                            placeholder="Buscar" required>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">Contrato ITLapiedad</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input style="background-color: white;" name="documento7" type="file" id="documento"
+                            placeholder="Buscar" required>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">Dictamen de equivalencia de bachillerato (cuando aplique)</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input style="background-color: white;" name="documento8" type="file" id="documento"
+                            placeholder="Buscar">
+                    </div>
+                </div>
+                <hr>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">Formato de asignacion de numeros de seguridad social</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input style="background-color: white;" name="documento9" type="file" id="documento"
+                            placeholder="Buscar" required>
+                    </div>
+                </div>
+                <hr>
+                <p>NOTA: Para uso exclusivo del departamento de servicios escolares</p>
+                <div class="form-group d-flex justify-content-center">
+                    <button class="btn btn-primary btn-block w-auto" id="guardar" onclick="desactivaBoton(this.id)">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div>
+    <ul class="pagination pagination-sm justify-content-center my-4">
+        <li class="page-item"><a class="page-link" href="/ficha/datos-se" id="Anterior">Anterior</a></li>
+        <li class="page-item"><a class="page-link" href="/ficha/datos-personales" id="uno">1</a></li>
+        <li class="page-item"><a class="page-link" href="/ficha/nivel-estudios" id="dos">2</a></li>
+        <li class="page-item"><a class="page-link" href="/ficha/datos-se" id="tres">3</a></li>
+        <li class="page-item active"><a class="page-link" href="/ficha/documentos" id="cuatro">4</a></li>
+        <li class="page-item"><a class="page-link" href="#" id="Siguiente">Siguiente</a></li>
+    </ul>
+</div>

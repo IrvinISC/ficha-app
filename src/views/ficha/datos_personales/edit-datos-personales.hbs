@@ -1,0 +1,192 @@
+<div class="col-md-auto mx-auto">
+    <div class="card text-center">
+        <div class="card-body">
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group d-flex justify-content-center">
+                        <h2>Editar datos personales</h2>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <form action="/ficha/edit-datos-personales/{{datos._id}}?_method=PUT" method="POST">
+                <input type="hidden" name="_method" value="PUT">
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input name="nombre" type="text" id="nombre" class="form-control"
+                                placeholder="Ingresa tu nombre" value="{{datos.nombre}}" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="apellidos">Apellidos</label>
+                            <input name="apellidos" type="text" id="apellidos" class="form-control"
+                                placeholder="Ingresa tus apellidos" value="{{datos.apellidos}}" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="fecha_nac">Fecha de nacimiento</label>
+                            <input name="fecha_nac" type="date" id="fecha_nac" class="form-control"
+                                value={{fecha_nac}} required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="lugar_nac">Lugar de nacimiento</label>
+                            <input name="lugar_nac" type="text" id="lugar_nac" class="form-control"
+                                placeholder="Ingresa tu lugar de nacimiento" value="{{datos.lugar_nac}}" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="estado_civil">Estado civil</label>
+                            <select name="estado_civil" id="estado_civil" class="form-control" required>
+                                {{#if_equal datos.estado_civil "Soltero"}}
+                                    <option>Ninguno</option>
+                                    <option selected>Soltero</option>
+                                    <option>Casado</option>
+                                    <option>Divorciado</option>
+                                    <option>Viudo</option>
+                                {{else}}
+                                    {{#if_equal datos.estado_civil "Casado"}}
+                                        <option>Ninguno</option>
+                                        <option>Soltero</option>
+                                        <option selected>Casado</option>
+                                        <option>Divorciado</option>
+                                        <option>Viudo</option>
+                                    {{else}}
+                                        {{#if_equal datos.estado_civil "Divorciado"}}
+                                            <option>Ninguno</option>
+                                            <option>Soltero</option>
+                                            <option>Casado</option>
+                                            <option selected>Divorciado</option>
+                                            <option>Viudo</option>
+                                        {{else}}
+                                            {{#if_equal datos.estado_civil "Viudo"}}
+                                                <option>Ninguno</option>
+                                                <option>Soltero</option>
+                                                <option>Casado</option>
+                                                <option>Divorciado</option>
+                                                <option selected>Viudo</option>
+                                            {{else}}
+                                                <option selected>Ninguno</option>
+                                                <option>Soltero</option>
+                                                <option>Casado</option>
+                                                <option>Divorciado</option>
+                                                <option>Viudo</option>
+                                            {{/if_equal}}
+                                        {{/if_equal}}
+                                    {{/if_equal}}
+                                {{/if_equal}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="sexo">Sexo</label>
+                            <select name="sexo" id="sexo" class="form-control" required>
+                                {{#if_equal datos.sexo "Masculino"}}
+                                    <option>Ninguno</option>
+                                    <option selected>Masculino</option>
+                                    <option>Femenino</option>
+                                    <option>Otro</option>
+                                {{else}}
+                                    {{#if_equal datos.sexo "Femenino"}}
+                                        <option>Ninguno</option>
+                                        <option>Masculino</option>
+                                        <option selected>Femenino</option>
+                                        <option>Otro</option>
+                                    {{else}}
+                                        {{#if_equal datos.sexo "Otro"}}
+                                            <option>Ninguno</option>
+                                            <option>Masculino</option>
+                                            <option>Femenino</option>
+                                            <option selected>Otro</option>
+                                        {{else}}
+                                            <option selected>Ninguno</option>
+                                            <option>Masculino</option>
+                                            <option>Femenino</option>
+                                            <option>Otro</option>
+                                        {{/if_equal}}
+                                    {{/if_equal}}
+                                {{/if_equal}}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="domicilio">Domicilio</label>
+                            <input name="domicilio" type="text" id="domicilio" class="form-control"
+                                placeholder="Ingresa tu domicilio" value="{{datos.domicilio}}" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="ciudad">Ciudad</label>
+                            <input name="ciudad" type="text" id="ciudad" class="form-control"
+                                placeholder="Ingresa tu ciudad" value="{{datos.ciudad}}" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="estado">Estado</label>
+                            <input name="estado" type="text" id="estado" class="form-control"
+                                placeholder="Ingresa tu estado" value="{{datos.estado}}" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="cod_postal">Código postal</label>
+                            <input name="cod_postal" type="text" id="cod_postal" class="form-control"
+                                placeholder="Ingresa tu código postal" value="{{datos.cod_postal}}" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="num_celular">Número de celular</label>
+                            <input name="num_celular" type="number" id="num_celular" class="form-control"
+                                placeholder="Ingresa tu número celular" value="{{datos.num_celular}}" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="correo">Correo</label>
+                            <input name="correo" type="email" class="form-control" id="correo"
+                                placeholder="nombre@ejemplo.com" value="{{datos.correo}}" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="tel_casa">Télefono de casa</label>
+                            <input name="tel_casa" type="number" id="tel_casa" class="form-control"
+                                placeholder="Ingresa télefono de casa" value="{{datos.tel_casa}}" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="num_opc">Número opcional</label>
+                            <input name="num_opc" type="number" id="num_opc" class="form-control"
+                                placeholder="En caso de emergencia llamar a" value="{{datos.num_opc}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group d-flex justify-content-center">
+                    <button class="btn btn-primary btn-block w-auto">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

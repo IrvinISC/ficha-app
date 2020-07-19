@@ -1,0 +1,107 @@
+<div class="col-md-auto mx-auto">
+    <div class="card text-center">
+        <div class="card-body">
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group d-flex justify-content-center">
+                        <h2>Editar datos socioeconómicos</h2>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <form action="/ficha/edit-datos-se/{{datos._id}}?_method=PUT" method="POST">
+                <input type="hidden" name="_method" value="PUT">
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>¿Formas parte un grupo indígena?</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            {{#if_equal datos.grp_ind "si"}}
+                                <input name="grp_ind" value="si" class="checkboxes" type="radio" id="grp_ind1"
+                                    checked required>
+                                <label for="checkbox1">Si</label>
+                                <input name="grp_ind" value="no" class="checkboxes" type="radio" id="grp_ind2"
+                                    required>
+                                <label for="checkbox2">No</label>
+                            {{else}}
+                                {{#if_equal datos.grp_ind "no"}}
+                                    <input name="grp_ind" value="si" class="checkboxes" type="radio" id="grp_ind1"
+                                    required>
+                                <label for="checkbox1">Si</label>
+                                <input name="grp_ind" value="no" class="checkboxes" type="radio" id="grp_ind2"
+                                    checked required>
+                                <label for="checkbox2">No</label>
+                                {{else}}
+                                {{/if_equal}}
+                            {{/if_equal}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Discapacidad</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            {{#if_equal datos.discapacidad "si"}}
+                                <input name="discapacidad" value="si" class="checkboxes" type="radio" id="checkbox1"
+                                    checked required>
+                                <label for="checkbox1">Si</label>
+                                <input name="discapacidad" value="no" class="checkboxes" type="radio" id="checkbox2"
+                                    required>
+                                <label for="checkbox2">No</label>
+                            {{else}}
+                                {{#if_equal datos.discapacidad "no"}}
+                                    <input name="discapacidad" value="si" class="checkboxes" type="radio" id="checkbox1"
+                                        required>
+                                    <label for="checkbox1">Si</label>
+                                    <input name="discapacidad" value="no" class="checkboxes" type="radio" id="checkbox2"
+                                        checked required>
+                                    <label for="checkbox2">No</label>
+                                {{else}}
+                                {{/if_equal}}
+                            {{/if_equal}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Beneficiario del programa prospera o PAL</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            {{#if_equal datos.prospera "si"}}
+                                <input name="prospera" value="si" class="checkboxes" type="radio" id="checkbox1" 
+                                checked required>
+                                <label for="checkbox1">Si</label>
+                                <input name="prospera" value="no" class="checkboxes" type="radio" id="checkbox2" 
+                                required>
+                                <label for="checkbox2">No</label>
+                            {{else}}
+                                {{#if_equal datos.prospera "no"}}
+                                    <input name="prospera" value="si" class="checkboxes" type="radio" id="checkbox1" 
+                                    required>
+                                    <label for="checkbox1">Si</label>
+                                    <input name="prospera" value="no" class="checkboxes" type="radio" id="checkbox2" 
+                                    checked required>
+                                    <label for="checkbox2">No</label>
+                                {{else}}
+                                {{/if_equal}}
+                            {{/if_equal}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group d-flex justify-content-center">
+                    <button class="btn btn-primary btn-block w-auto" style="width: auto;">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

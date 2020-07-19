@@ -1,0 +1,160 @@
+{{#if datos}}
+<div class="col-md-auto mx-auto">
+    <div class="card text-center">
+        <div class="card-body">
+            {{#if_equal count 9}}
+            {{else}}
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group d-flex justify-content-center">
+                        <h2>Documentación</h2>
+                    </div>
+                </div>
+            </div>
+            {{/if_equal}}
+            {{#each datos}}
+            {{#if_equal missing "no"}}
+            <hr>
+            <div class="form-row text-left">
+                <div class="col">
+                    <div class="form-group">
+                        {{#if_equal documentType "documento1"}}
+                            <label for="">Certificado de bachillerato</label>
+                        {{else}}
+                            {{#if_equal documentType "documento2"}}
+                                <label for="">Acta de nacimiento</label>
+                            {{else}}
+                                {{#if_equal documentType "documento3"}}
+                                    <label for="">CURP</label>
+                                {{else}}
+                                    {{#if_equal documentType "documento4"}}
+                                        <label for="">Fotografia tamaño infantil reciente</label>
+                                    {{else}}
+                                        {{#if_equal documentType "documento5"}}
+                                            <label for="">Comprobante de pago por concepto de inscripcion</label>
+                                        {{else}}
+                                            {{#if_equal documentType "documento6"}}
+                                                <label for="">Certificado medico</label>
+                                            {{else}}
+                                                {{#if_equal documentType "documento7"}}
+                                                    <label for="">Contrato ITLapiedad</label>
+                                                {{else}}
+                                                    {{#if_equal documentType "documento8"}}
+                                                        <label for="">Dictamen de equivalencia de bachillerato</label>
+                                                    {{else}}
+                                                        {{#if_equal documentType "documento9"}}
+                                                            <label for="">Formato de asignacion de numeros de seguridad social</label>
+                                                        {{else}}
+                                                        {{/if_equal}}
+                                                    {{/if_equal}}
+                                                {{/if_equal}}
+                                            {{/if_equal}}
+                                        {{/if_equal}}
+                                    {{/if_equal}}
+                                {{/if_equal}}
+                            {{/if_equal}}
+                        {{/if_equal}}
+                    </div>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <a href={{documentURL}} target="_blank">Ver documento</a>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <form action="/ficha/delete-documentos/{{_id}}?_method=DELETE" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger btn-block btn-sm w-auto">
+                            Eliminar
+                        </button>
+                    </form>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <a href="/ficha/edit-documentos/{{_id}}"><i class="fa fa-pencil"></i></a>
+                </div>
+            </div>
+            {{else}}
+            {{/if_equal}}
+            {{/each}}
+            {{#if_max count 0}}
+            {{#if_equal count 9}}
+            {{else}}
+            <hr>
+            {{/if_equal}}
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group d-flex justify-content-center">
+                        <h2>Documentos faltantes</h2>
+                    </div>
+                </div>
+            </div>
+            {{else}}
+            {{/if_max}}
+            {{#each datos}}
+                {{#if_equal missing "si"}}
+                <hr>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                        {{#if_equal documentType "documento1"}}
+                            <label for="">Certificado de bachillerato</label>
+                        {{else}}
+                            {{#if_equal documentType "documento2"}}
+                                <label for="">Acta de nacimiento</label>
+                            {{else}}
+                                {{#if_equal documentType "documento3"}}
+                                    <label for="">CURP</label>
+                                {{else}}
+                                    {{#if_equal documentType "documento4"}}
+                                        <label for="">Fotografia tamaño infantil reciente</label>
+                                    {{else}}
+                                        {{#if_equal documentType "documento5"}}
+                                            <label for="">Comprobante de pago por concepto de inscripcion</label>
+                                        {{else}}
+                                            {{#if_equal documentType "documento6"}}
+                                                <label for="">Certificado medico</label>
+                                            {{else}}
+                                                {{#if_equal documentType "documento7"}}
+                                                    <label for="">Contrato ITLapiedad</label>
+                                                {{else}}
+                                                    {{#if_equal documentType "documento8"}}
+                                                        <label for="">Dictamen de equivalencia de bachillerato</label>
+                                                    {{else}}
+                                                        {{#if_equal documentType "documento9"}}
+                                                            <label for="">Formato de asignacion de numeros de seguridad social</label>
+                                                        {{else}}
+                                                        {{/if_equal}}
+                                                    {{/if_equal}}
+                                                {{/if_equal}}
+                                            {{/if_equal}}
+                                        {{/if_equal}}
+                                    {{/if_equal}}
+                                {{/if_equal}}
+                            {{/if_equal}}
+                        {{/if_equal}}
+                        </div>
+                    </div>
+                    <div class="col d-flex justify-content-center">
+                    <a href='#'>No se encontro el documento</a>
+                    </div>
+                    <div class="col d-flex justify-content-center">
+                        <a href="/ficha/edit-documentos/{{_id}}"><i class="fa fa-pencil"></i></a>
+                    </div>
+                </div>
+                {{else}}
+                {{/if_equal}}
+            {{/each}}
+        </div>
+    </div>
+</div>
+{{/if}}
+{{#if datos}}
+<div>
+    <ul class="pagination pagination-sm justify-content-center my-4">
+        <li class="page-item"><a class="page-link" href="/ficha/datos-se" id="Anterior">Anterior</a></li>
+        <li class="page-item"><a class="page-link" href="/ficha/datos-personales" id="uno">1</a></li>
+        <li class="page-item"><a class="page-link" href="/ficha/nivel-estudios" id="dos">2</a></li>
+        <li class="page-item"><a class="page-link" href="/ficha/datos-se" id="tres">3</a></li>
+        <li class="page-item active"><a class="page-link" href="/ficha/documentos" id="cuatro">4</a></li>
+        <li class="page-item"><a class="page-link" href="#" id="Siguiente">Siguiente</a></li>
+    </ul>
+</div>
+{{/if}}

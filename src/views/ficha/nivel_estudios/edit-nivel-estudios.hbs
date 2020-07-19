@@ -1,0 +1,160 @@
+<div class="col-md-auto mx-auto">
+    <div class="card text-center">
+        <div class="card-body">
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group d-flex justify-content-center">
+                        <h2>Editar nivel de estudios</h2>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <form action="/ficha/edit-nivel-estudios/{{datos._id}}?_method=PUT" method="POST">
+                <input type="hidden" name="_method" value="PUT">
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="nivel_estudio">Nivel de estudio previo</label>
+                            <select name="nivel_estudio" id="nivel_estudio" class="form-control" required>
+                                {{#if_equal datos.nivel_estudio "Bachillerato"}}
+                                    <option selected>Bachillerato</option>
+                                    <option>Licenciatura</option>
+                                    <option>Maestria</option>
+                                {{else}}
+                                    {{#if_equal datos.nivel_estudio "Licenciatura"}}
+                                        <option>Bachillerato</option>
+                                        <option selected>Licenciatura</option>
+                                        <option>Maestria</option>
+                                    {{else}}
+                                        {{#if_equal datos.nivel_estudio "Maestria"}}
+                                            <option>Bachillerato</option>
+                                            <option>Licenciatura</option>
+                                            <option selected>Maestria</option>
+                                        {{else}}
+                                        {{/if_equal}}
+                                    {{/if_equal}}
+                                {{/if_equal}}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="nom_escuela">Nombre de la escuela</label>
+                            <input name="nom_escuela" type="text" id="nom_escuela" class="form-control"
+                                placeholder="Introduce el nombre de la escuela" value="{{datos.nom_escuela}}" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="estado_escuela">Estado</label>
+                            <input name="estado_escuela" type="text" id="estado_escuela" class="form-control"
+                                placeholder="Ingresa el estado de la escuela" value="{{datos.estado_escuela}}" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="anio_inicio">Año de inicio</label>
+                            <input name="anio_inicio" type="number" id="anio_inicio" class="form-control"
+                                placeholder="Introduce el año de inicio" value="{{datos.anio_inicio}}" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="anio_term">Año de terminación</label>
+                            <input name="anio_term" type="number" id="anio_term" class="form-control"
+                                placeholder="Introduce el año de terminación" value="{{datos.anio_term}}" required>
+                        </div>
+                    </div>
+                </div>
+                <h2>Carrera</h2>
+                <hr>
+                <div class="form-row text-left">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="carrera">Carrera a cursar</label>
+                            <select name="carrera" id="carrera" class="form-control" style="width: 50%;" required>
+                                {{#if_equal datos.carrera "Ingeniería en administración"}}
+                                    <option selected>Ingeniería en administración</option>
+                                    <option>Ingeniería en gestión empresarial</option>
+                                    <option>Ingeniería Industrial</option>
+                                    <option>Ingeniería en mecatrónica</option>
+                                    <option>Ingeniería en bioquímica</option>
+                                    <option>Ingeniería en Tics</option>
+                                    <option>Ingeniería en sistemas computacionales</option>
+                                {{else}}
+                                    {{#if_equal datos.carrera "Ingeniería en gestión empresarial"}}
+                                        <option>Ingeniería en administración</option>
+                                        <option selected>Ingeniería en gestión empresarial</option>
+                                        <option>Ingeniería Industrial</option>
+                                        <option>Ingeniería en mecatrónica</option>
+                                        <option>Ingeniería en bioquímica</option>
+                                        <option>Ingeniería en Tics</option>
+                                        <option>Ingeniería en sistemas computacionales</option>
+                                    {{else}}
+                                        {{#if_equal datos.carrera "Ingeniería Industrial"}}
+                                            <option>Ingeniería en administración</option>
+                                            <option>Ingeniería en gestión empresarial</option>
+                                            <option selected>Ingeniería Industrial</option>
+                                            <option>Ingeniería en mecatrónica</option>
+                                            <option>Ingeniería en bioquímica</option>
+                                            <option>Ingeniería en Tics</option>
+                                            <option>Ingeniería en sistemas computacionales</option>
+                                        {{else}}
+                                            {{#if_equal datos.carrera "Ingeniería en mecatrónica"}}
+                                                <option>Ingeniería en administración</option>
+                                                <option>Ingeniería en gestión empresarial</option>
+                                                <option>Ingeniería Industrial</option>
+                                                <option selected>Ingeniería en mecatrónica</option>
+                                                <option>Ingeniería en bioquímica</option>
+                                                <option>Ingeniería en Tics</option>
+                                                <option>Ingeniería en sistemas computacionales</option>
+                                            {{else}}
+                                                {{#if_equal datos.carrera "Ingeniería en bioquímica"}}
+                                                    <option>Ingeniería en administración</option>
+                                                    <option>Ingeniería en gestión empresarial</option>
+                                                    <option>Ingeniería Industrial</option>
+                                                    <option>Ingeniería en mecatrónica</option>
+                                                    <option selected>Ingeniería en bioquímica</option>
+                                                    <option>Ingeniería en Tics</option>
+                                                    <option>Ingeniería en sistemas computacionales</option>
+                                                {{else}}
+                                                    {{#if_equal datos.carrera "Ingeniería en Tics"}}
+                                                        <option>Ingeniería en administración</option>
+                                                        <option>Ingeniería en gestión empresarial</option>
+                                                        <option>Ingeniería Industrial</option>
+                                                        <option>Ingeniería en mecatrónica</option>
+                                                        <option>Ingeniería en bioquímica</option>
+                                                        <option selected>Ingeniería en Tics</option>
+                                                        <option>Ingeniería en sistemas computacionales</option>
+                                                    {{else}}
+                                                        {{#if_equal datos.carrera "Ingeniería en sistemas computacionales"}}
+                                                            <option>Ingeniería en administración</option>
+                                                            <option>Ingeniería en gestión empresarial</option>
+                                                            <option>Ingeniería Industrial</option>
+                                                            <option>Ingeniería en mecatrónica</option>
+                                                            <option>Ingeniería en bioquímica</option>
+                                                            <option>Ingeniería en Tics</option>
+                                                            <option selected>Ingeniería en sistemas computacionales</option>
+                                                        {{else}}
+                                                        {{/if_equal}}
+                                                    {{/if_equal}}
+                                                {{/if_equal}}
+                                            {{/if_equal}}
+                                        {{/if_equal}}
+                                    {{/if_equal}}
+                                {{/if_equal}}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group d-flex justify-content-center">
+                    <button class="btn btn-primary btn-block w-auto">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

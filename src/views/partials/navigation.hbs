@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a href="/"><img src="/img/pic-tec.png" class="rounded-circle mx-auto d-block logo" style="width: 25px;"></a>
+        <a class="navbar-brand" href="/">
+            Ficha Tecnologico de la Piedad
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">Acerca</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                {{#if user}}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ficha
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/ficha/datos-personales">Llenar mi ficha</a>
+                        <a class="dropdown-item" href="/ficha/view-datos-personales">Ver mi ficha</a>
+                        <div class="dropdown-divider"></div>
+                        <form action="/delete/ficha/{{user._id}}?_method=DELETE" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="submit" value="Borrar ficha">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="/users/logout" class="nav-link">Cerrar sesión</a>
+                </li>
+                {{else}}
+                <li class="nav-item">
+                    <a href="/users/signin" class="nav-link">Iniciar sesión</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/users/signup" class="nav-link">Registrarse</a>
+                </li>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+</nav>

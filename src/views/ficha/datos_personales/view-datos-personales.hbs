@@ -1,0 +1,134 @@
+<div class="col-md-auto mx-auto">
+    {{#if datos.0.nombre}}
+    <div class="card text-center">
+        <div class="card-body">
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group d-flex justify-content-center">
+                        <h2>Datos personales</h2>
+                    </div>
+                </div>
+                <a href="/ficha/edit-datos-personales/{{datos.0._id}}"><i class="fa fa-pencil"></i></a>
+            </div>
+            <hr>
+            <div class="form-row text-left">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <label for="" class="form-control">{{datos.0.nombre}}</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="apellidos">Apellidos</label>
+                        <label for="" class="form-control">{{datos.0.apellidos}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row text-left">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="fecha_nac">Fecha de nacimiento</label>
+                        <label for="" class="form-control">{{newFecha}}</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="lugar_nac">Lugar de nacimiento</label>
+                        <label for="" class="form-control">{{datos.0.lugar_nac}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row text-left">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="estado_civil">Estado civil</label>
+                        <label for="" class="form-control">{{datos.0.estado_civil}}</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="sexo">Sexo</label>
+                        <label for="" class="form-control">{{datos.0.sexo}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row text-left">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="domicilio">Domicilio</label>
+                        <label for="" class="form-control">{{datos.0.domicilio}}</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="ciudad">Ciudad</label>
+                        <label for="" class="form-control">{{datos.0.ciudad}}</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="estado">Estado</label>
+                        <label for="" class="form-control">{{datos.0.estado}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row text-left">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="cod_postal">Código postal</label>
+                        <label for="" class="form-control">{{datos.0.cod_postal}}</label>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group">
+                        <label for="num_celular">Número de celular</label>
+                        <label for="" class="form-control">{{datos.0.num_celular}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row text-left">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="correo">Correo</label>
+                        <label for="" class="form-control">{{datos.0.correo}}</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="tel_casa">Télefono de casa</label>
+                        <label for="" class="form-control">{{datos.0.tel_casa}}</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="num_opc">Número opcional</label>
+                        <label for="" class="form-control">{{datos.0.num_opc}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group d-flex justify-content-center">
+                <form action="/ficha/delete-datos-personales/{{datos.0._id}}?_method=DELETE" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger btn-block btn-sm w-auto">
+                        Eliminar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+</div>
+{{#if datos.0.nombre}}
+<div>
+    <ul class="pagination pagination-sm justify-content-center my-4">
+        <li class="page-item"><a class="page-link" href="#" id="Anterior">Anterior</a></li>
+        <li class="page-item active"><a class="page-link" href="/ficha/datos-personales" id="uno">1</a></li>
+        <li class="page-item"><a class="page-link" href="/ficha/nivel-estudios" id="dos">2</a></li>
+        <li class="page-item"><a class="page-link" href="/ficha/datos-se" id="tres">3</a></li>
+        <li class="page-item"><a class="page-link" href="/ficha/documentos" id="cuatro">4</a></li>
+        <li class="page-item"><a class="page-link" href="/ficha/nivel-estudios" id="Siguiente">Siguiente</a></li>
+    </ul>
+</div>
+{{/if}}
