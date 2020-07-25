@@ -26,8 +26,52 @@ documentosController.createNewDocumentos = async (req, res) => {
     });
     var doc = req.files;
     if (unique.length == 0 && (doc.length >= 8 && doc.length <= 9)) {
+        var pesados = [];
+        var noSoportados = [];
+        const nombreDocs = ['Certificado de bachillerato', 'Acta de nacimiento', 'CURP', 'Fotografia tamaño infantil',
+            'Comprobante de pago', 'Certificado medico', 'Contrato ITLapiedad', 'Dictamen de equivalencia de bachillerato',
+            'Formato de asignacion de numeros de seguridad social'
+        ];
+        for (i = 0; i < doc.length; i++) {
+            if (doc[i].mimetype == 'image/png' || doc[i].mimetype == 'image/jpg' ||
+                doc[i].mimetype == 'image/jpeg' || doc[i].mimetype == 'application/pdf') {
+                if (doc[i].size < 1048576) {
+
+                } else {
+                    pesados.push(nombreDocs[i]);
+                }
+            } else {
+                noSoportados.push(nombreDocs[i]);
+            }
+
+        }
+        var pesadosCadena = [];
+        for (i = 0; i < pesados.length; i++) {
+            pesadosCadena = pesados[i] + ", " + pesadosCadena;
+        }
+        var noSopCadena = [];
+        for (i = 0; i < noSoportados.length; i++) {
+            noSopCadena = noSoportados[i] + ", " + noSopCadena;
+        }
+        const warnings = [];
+        if (pesados.length > 0) {
+            warnings.push({
+                text: 'Documentos demasiado pesados: ' + pesadosCadena
+            });
+        }
+        if (noSoportados.length > 0) {
+            warnings.push({
+                text: 'Documentos no soportados: ' + noSopCadena
+            });
+        }
+        if (warnings.length > 0) {
+            return res.render('ficha/documentos/documentos', {
+                warnings
+            });
+        }
         for (i = 0; i < doc.length; i++) {
             const result = await cloudinary.v2.uploader.upload(doc[i].path);
+            console.log(result);
             const newDoc = new documentos({
                 documentType: doc[i].fieldname,
                 documentURL: result.url,
@@ -62,7 +106,7 @@ documentosController.createNewDocumentos = async (req, res) => {
         }
         req.flash('success_msg', 'Ficha creada exitosamente');
         res.redirect('/ficha/view-datos-personales');
-    }else{
+    } else {
         res.redirect('/ficha/view-documentos');
     }
 };

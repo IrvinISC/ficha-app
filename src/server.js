@@ -9,18 +9,7 @@ const session = require('express-session');
 const passport = require('passport');
 
 // Initializations
-const storage = multer.diskStorage({
-    fileFilter: (req, file, next) => {
-        const filterTypes = /jpg|jpeg|png|gif|pdf/;
-        const filetype = filterTypes.test(file.mimetype);
-        const extname = filterTypes.test(path.extname(file.originalname));
-        if (filetype && extname) {
-            return next(null, true);
-        } else {
-            next('error: tipo de archivo no soportado');
-        }
-    }
-});
+const storage = multer.diskStorage({});
 const app = express();
 require('./config/passport');
 
@@ -63,12 +52,7 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({
     extended: false
 }));
-app.use(multer({
-    storage,
-    limits: {
-        fileSize: 1000000
-    }
-}).any('documento1',
+app.use(multer({storage}).any('documento1',
     'documento2',
     'documento3',
     'documento4',
@@ -94,6 +78,7 @@ app.use((req, res, next) => {
     res.locals.error_msg = req.flash('error_msg');
     res.locals.warning_msg = req.flash('warning_msg');
     res.locals.error = req.flash('error');
+    res.locals.warnings = req.flash('warning');
     res.locals.user = req.user || null;
     next();
 });

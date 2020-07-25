@@ -14,24 +14,48 @@ cloudinary.config({
 });
 
 consultasController.deleteFicha = async (req, res) => {
-    //eliminar datos personales
-    const datosP = await datos_personales.find({usuario: req.params.id});
-    await datos_personales.findByIdAndDelete(datosP[0]._id);
-    //eliminar datos de nivel de estudio
-    const datosE = await nivel_estudios.find({usuario: req.params.id});
-    await nivel_estudios.findByIdAndDelete(datosE[0]._id);
-    //eliminar datos socioeconomicos
-    const datosS = await datos_se.find({usuario: req.params.id});
-    await datos_se.findByIdAndDelete(datosS[0]._id);
-    //eliminar documentos
-    const docs = await documentos.find({usuario: req.params.id});
-    for(i = 0;i < docs.length;i++){
-        await cloudinary.v2.uploader.destroy(docs[i].public_id, {
-            invalidate: true,
-            resource_types: "image"
-        })
-        .catch(err => console.log("Documento no encontrado"));
-        await documentos.findByIdAndDelete(docs[i]._id);
+    try {
+        //eliminar datos personales
+        const datosP = await datos_personales.find({
+            usuario: req.params.id
+        });
+        await datos_personales.findByIdAndDelete(datosP[0]._id);
+    } catch (error) {
+        console.log(error);
+    }
+    try {
+        //eliminar datos de nivel de estudio
+        const datosE = await nivel_estudios.find({
+            usuario: req.params.id
+        });
+        await nivel_estudios.findByIdAndDelete(datosE[0]._id);
+    } catch (error) {
+        console.log(error);
+    }
+    try {
+        //eliminar datos socioeconomicos
+        const datosS = await datos_se.find({
+            usuario: req.params.id
+        });
+        await datos_se.findByIdAndDelete(datosS[0]._id);
+    } catch (error) {
+        console.log(error);
+    }
+    try {
+        //eliminar documentos
+        const docs = await documentos.find({
+            usuario: req.params.id
+        });
+        for (i = 0; i < docs.length; i++) {
+            await cloudinary.v2.uploader.destroy(docs[i].public_id, {
+                    invalidate: true,
+                    resource_types: "image"
+                })
+                .catch(err => console.log("Documento no encontrado"));
+            await documentos.findByIdAndDelete(docs[i]._id);
+        }
+    } catch (error) {
+        console.log(error);
     }
     res.redirect('/');
 };
